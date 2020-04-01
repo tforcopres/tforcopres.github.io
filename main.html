@@ -1,0 +1,120 @@
+<html>
+<head>
+    <title>Love & Hate</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://use.typekit.net/ioh2uvl.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="title">
+        What do you <span class="blue">LOVE</span> and what do you <span class="red">HATE</span> about Urban?
+        
+    </div>
+    <div class="reset-container">
+        <div class="reset">cached</div>
+    </div>
+    
+
+    <div class="left-panel">
+        <div class="submission-box">
+            <div class="sub-title">Post</div>
+            <input type='text' id='love' placeholder="LOVE" autocapitalize="none" autocomplete="off" autocorrect='off' spellcheck="false">
+            <input type='text' id='hate' placeholder="HATE" autocapitalize="none" autocomplete="off" autocorrect='off' spellcheck="false">
+            <div class="submit">Submit</div>
+        </div>
+    </div>
+
+    <div class="word-cloud">
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDP9CBX-4S6ci6vcrTc-u-vYy0igwbvXW0",
+            authDomain: "lovehate-34aae.firebaseapp.com",
+            databaseURL: "https://lovehate-34aae.firebaseio.com",
+            projectId: "lovehate-34aae",
+            storageBucket: "lovehate-34aae.appspot.com",
+            messagingSenderId: "25988120909",
+            appId: "1:25988120909:web:65350fdf1c4737b9407704"
+        };
+        firebase.initializeApp(firebaseConfig);
+        var database = firebase.database();
+    </script>
+
+    <script>
+        var msgRe = /^[a-zA-Z0-9!.,/?]+$/
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        var postsRef = database.ref('posts/')
+
+        function publishWord(str, emotion) {
+            let ref = postsRef.push();
+            ref.set({
+                "message": str.trim(),
+                "emotion": emotion
+            }).catch(error => {
+                //alert("Submission is empty, too long, or contains invalid characters :(")
+            })
+        }
+
+        function reportError() { alert("Submission is empty, too long, or contains invalid characters :(") }
+
+        $("div.submit").on("click", function() {
+            let love = $("#love").val()
+            let hate = $("#hate").val()
+            let lM = msgRe.test(love)
+            let hM = msgRe.test(hate)
+            if(!lM || !hM) { reportError() }
+            else {
+                publishWord(love, 1)
+                publishWord(hate, 0)
+            }
+        })
+
+        var words = []
+
+        function createWord(str, emotion) {
+            let x = getRandomInt(250, $(".word-cloud").width() - 250)
+            let y = getRandomInt(20, $(".word-cloud").height() - 20)
+            let emotionString = (emotion === 1) ? "love" : "hate" 
+            $(".word-cloud").append("<div class='word' id=" + emotionString + " style='top:" + y + "px; left:" + x + "px;'>" + str + "</div>")
+        }
+
+        function retrieveWords() {
+            postsRef.once('value', function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                    console.log(childSnapshot.key)
+                    console.log(childSnapshot.val())
+                    let msg = childSnapshot.val().message
+                    if(msg !== "" && msg !== " ") {
+                        createWord(msg, childSnapshot.val().emotion)
+                    }
+                })
+            })
+        }
+        //retrieveWords()
+        postsRef.on('child_added', function(data) {
+            let msg = data.val().message
+            if(msgRe.test(msg)) {
+                createWord(data.val().message, data.val().emotion)
+                words.push([data.val().message, data.val().emotion])
+            }
+        });
+
+        $(".reset").on("click", function() {
+            $("div.word-cloud").empty()
+            words.forEach(w => { createWord(w[0], w[1]) })
+        })
+        
+    </script>
+</body>
+</html>

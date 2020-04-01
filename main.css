@@ -1,0 +1,242 @@
+body 
+{
+    margin: 0px;
+    overflow: hidden;
+    font-family: lato, sans-serif;
+}
+div.title 
+{
+    
+    font-weight: 800;
+    font-size: 20px;
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid gray;
+    background-color: rgb(250, 250, 250);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+div.left-panel
+{
+    font-family: lato, sans-serif;
+    float: left;
+    height: 100%;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+}
+
+div.submission-box
+{
+    width: 250px;
+    height: 270px;
+    margin-bottom: 178px;
+    border: 1px solid gray;
+    background-color: rgb(250, 250, 250);
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+}
+
+div.sub-title
+{
+    width: 250px;
+    height: 30px;
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 800;
+    font-size: 25px;
+}
+
+div.word-cloud
+{
+    width: 100%;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-color: rgb(220, 220, 220);
+    z-index: -1;
+}
+
+div.word
+{
+    position: absolute;
+    border-radius: 5px;
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 7px;
+    padding-right: 7px;
+    font-size: 11px;
+}
+
+div.word#hate
+{
+    background-color: #ec5958;
+}
+
+div.word#love
+{
+    background-color: #6490cb;
+}
+
+span.red
+{
+    color: #ec5958;
+    display: inline;
+    margin: 10px;
+}
+
+span.blue
+{
+    color: #6490cb;
+    display: inline;
+    margin: 10px;
+}
+
+input[type=text]
+{
+    background-color: rgb(250, 250, 250);
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 5px 5px 5px 5px;
+    width: 70%;
+    transition: border .12s, padding .15s;
+    display: inline-block;
+    font-size: 14px;
+    color: #6490cb;
+    font-family: lato, sans-serif;
+    text-align: left;
+    float: left;
+    -webkit-touch-callout: auto; /* iOS Safari */
+    -webkit-user-select: auto; /* Safari */
+     -khtml-user-select: auto; /* Konqueror HTML */
+       -moz-user-select: auto; /* Old versions of Firefox */
+        -ms-user-select: auto; /* Internet Explorer/Edge */
+            user-select: auto;
+}
+
+input[type=text]#hate
+{
+    margin-top: 35px;
+    color:#ec5958;
+}
+
+input[type=text]::placeholder
+{
+    font-family: lato, sans-serif;
+    color: gray;
+}
+
+input:focus
+{
+  outline: none;
+}
+
+input[type=text]#love:focus
+{
+    border-bottom-color: #6490cb;
+}
+
+input[type=text]#hate:focus
+{
+    border-bottom-color: #ec5958;
+}
+
+div.submit
+{
+    font-family: lato, sans-serif;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 800;
+    color: white;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #6490cb;
+    display: block;
+    z-index: 2;
+    margin-top: 35px;
+    transition: box-shadow .12s, background-color .15s;
+}
+
+div.submit:hover
+{
+    box-shadow: 2px 2px 7px 0 rgba(0, 0, 0, 0.4);
+}
+
+div.submit:active
+{
+    background-color: #4866c2;
+}
+
+div.submit:focus
+{
+    outline: none;
+}
+
+div.reset-container
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.reset
+{
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    border: 1px solid gray;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+    transition: box-shadow .12s, background-color .15s;
+    padding: 7px;
+    border-radius: 5px;
+    background-color: rgb(250, 250, 250);
+    margin: auto;
+    margin-top: 20px;
+}
+
+div.reset:hover
+{
+    box-shadow: 2px 2px 7px 0 rgba(0, 0, 0, 0.4);
+}
+
+div.reset:active
+{
+    background-color: rgb(220, 220, 220);
+}
+
+div.reset:focus
+{
+    outline: none;
+}
