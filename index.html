@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="title">
-        What do you <span class="blue">LOVE</span> and what do you <span class="red">HATE</span> about Urban?
+        What do you <span class="blue">LOVE</span> and what do you <span class="red">HATE</span> (strongly dislike) about Urban?
         
     </div>
     <div class="reset-container">
@@ -47,7 +47,7 @@
     </script>
 
     <script>
-        var msgRe = /^[a-zA-Z0-9!.,\/?\'\" ]+$/
+        var msgRe = /^[a-zA-Z0-9!.,\/?\'\" ():;]+$/
 
         function getRandomInt(min, max) {
             min = Math.ceil(min);
