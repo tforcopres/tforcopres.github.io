@@ -1,10 +1,9 @@
-<!DOCTYPE html>
 <html>
 <head>
     <title>Love & Hate</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://use.typekit.net/ioh2uvl.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -20,6 +19,7 @@
     <div class="left-panel">
         <div class="submission-box">
             <div class="sub-title">Post</div>
+            <div class="warn">(submissions that break school rules will be taken down)</div>
             <input type='text' id='love' placeholder="LOVE" autocapitalize="none" autocomplete="off" autocorrect='off' spellcheck="false">
             <input type='text' id='hate' placeholder="HATE" autocapitalize="none" autocomplete="off" autocorrect='off' spellcheck="false">
             <div class="submit">Submit</div>
@@ -47,7 +47,7 @@
     </script>
 
     <script>
-        var msgRe = /^[a-zA-Z0-9!.,\/?'\" ]+$/
+        var msgRe = /^[a-zA-Z0-9!.,\/?\'\" ]+$/
 
         function getRandomInt(min, max) {
             min = Math.ceil(min);

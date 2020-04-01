@@ -36,7 +36,7 @@ div.left-panel
 div.submission-box
 {
     width: 250px;
-    height: 270px;
+    height: 300px;
     margin-bottom: 178px;
     border: 1px solid gray;
     background-color: rgb(250, 250, 250);
@@ -52,7 +52,7 @@ div.sub-title
     height: 30px;
     text-align: center;
     padding-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-weight: 800;
     font-size: 25px;
 }
@@ -253,4 +253,15 @@ div.reset:active
 div.reset:focus
 {
     outline: none;
+}
+
+div.warn
+{
+    font-style: italic;
+    font-size: 11px;
+    text-align: center;
+    color: gray;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
 }
