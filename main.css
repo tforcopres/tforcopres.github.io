@@ -208,7 +208,6 @@ div.reset
     direction: ltr;
     border: 1px solid gray;
 
-    /* Support for all WebKit browsers. */
     -webkit-font-smoothing: antialiased;
     /* Support for Safari and Chrome. */
     text-rendering: optimizeLegibility;
