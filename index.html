@@ -74,7 +74,7 @@
             let hate = $("#hate").val()
             let lM = msgRe.test(love)
             let hM = msgRe.test(hate)
-            if(!lM || !hM) { reportError() }
+            if(!lM) { reportError() }
             else {
                 publishWord(love, 1)
                 $("#love").val('')
